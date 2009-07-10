@@ -1,0 +1,12 @@
+--- origsrc/libexif-gtk-0.3.5/configure.in	2004-10-18 14:12:58.000000000 -0500
++++ src/libexif-gtk-0.3.5/configure.in	2008-12-20 19:56:09.600551400 -0600
+@@ -34,7 +34,8 @@
+ dnl i18n support
+ dnl ---------------------------------------------------------------------------
+ ALL_LINGUAS="es fr ru"
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_VERSION([0.17])
+ 
+ dnl ---------------------------------------------------------------------------
+ dnl libraries needed

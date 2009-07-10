@@ -1,0 +1,5 @@
+category: Graphics
+requires: libexif-gtk5 libexif-devel libgdk_pixbuf2.0-devel libglib2.0-devel libgtk2.0-devel gettext
+external-source: libexif-gtk
+sdesc: "GTK interface for libexif (development)"
+ldesc: "GTK interface for libexif"
