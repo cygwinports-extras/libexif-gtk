@@ -1,0 +1,52 @@
+NAME="libexif-gtk"
+VERSION=0.4.0
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="GTK+ interface for libexif"
+DESCRIPTION="libexif-gtk is a library of widgets to help display EXIF tags in
+GTK+ programs."
+HOMEPAGE="http://libexif.sourceforge.net/"
+SRC_URI="mirror://sourceforge/libexif/${P}.tar.bz2"
+PATCH_URI="
+	0.4.0-no-undefined.patch
+"
+
+PKG_NAMES="${NAME}5 ${NAME}3_5 ${NAME}-common
+           ${NAME}-devel ${NAME}3-devel ${NAME}-devel-common"
+libexif_gtk5_REQUIRES="libexif-gtk-common"
+libexif_gtk5_CONTENTS="usr/bin/cygexif-gtk-5.dll"
+libexif_gtk3_5_REQUIRES="libexif-gtk-common"
+libexif_gtk3_5_CONTENTS="usr/bin/cygexif-gtk3-5.dll"
+libexif_gtk_common_CONTENTS="usr/share/doc/ usr/share/locale/"
+libexif_gtk_devel_REQUIRES="libexif-gtk-devel-common libgtk2.0-devel"
+libexif_gtk_devel_CONTENTS="usr/lib/libexif-gtk.* usr/lib/pkgconfig/libexif-gtk.pc"
+libexif_gtk3_devel_REQUIRES="libexif-gtk-devel-common libgtk3-devel"
+libexif_gtk3_devel_CONTENTS="usr/lib/libexif-gtk3.* usr/lib/pkgconfig/libexif-gtk3.pc"
+libexif_gtk_devel_common_CONTENTS="usr/include/"
+
+DIFF_EXCLUDES="m4"
+
+src_compile() {
+	cd ${S}
+	cygautoreconf
+	CYGCONF_SOURCE=${S}
+
+	mkdir -p ${B}/gtk2
+	cd ${B}/gtk2
+	cygconf
+	cygmake
+
+	mkdir -p ${B}/gtk3
+	cd ${B}/gtk3
+	cygconf --with-gtk3
+	cygmake
+}
+
+src_install() {
+	cd ${B}/gtk3
+	cyginstall
+	cd ${B}/gtk2
+	cyginstall
+}
+
+KEEP_LA_FILES="none"

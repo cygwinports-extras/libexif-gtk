@@ -1,0 +1,11 @@
+--- origsrc/libexif-gtk-0.4.0/libexif-gtk/Makefile.am	2012-05-08 16:52:54.000000000 -0500
++++ src/libexif-gtk-0.4.0/libexif-gtk/Makefile.am	2013-08-12 19:42:51.746929400 -0500
+@@ -42,7 +42,7 @@ libexif_@LIBEXIF_GTK_EXTENSION@_la_CFLAG
+ 	$(GTK_CFLAGS)					\
+ 	-DG_LOG_DOMAIN=\"libexif\"
+ 
+-libexif_@LIBEXIF_GTK_EXTENSION@_la_LDFLAGS = -version-info @LIBEXIF_GTK_VERSION_INFO@
++libexif_@LIBEXIF_GTK_EXTENSION@_la_LDFLAGS = -version-info @LIBEXIF_GTK_VERSION_INFO@ -no-undefined
+ 
+ libexif_@LIBEXIF_GTK_EXTENSION@_la_LIBADD = \
+ 	$(AM_LDFLAGS) $(LDFLAGS)				\
